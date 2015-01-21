@@ -1,0 +1,14 @@
+<h1> El Databaso de Hospitalo </h1>
+
+<%= link_to "New Patient", new_patient_path %>
+<br>
+<br>
+<% @patients.each do |patient| %>
+	<%= patient.first_name %>
+	<%= patient.last_name %>
+	<%= link_to "Show", patient_path(patient) %>
+	<%= link_to "Edit", edit_patient_path(patient) %>
+	<%= link_to "Delete", patient_path(patient), method: :delete %>
+
+	<br>
+<% end %>
