@@ -1,4 +1,6 @@
 class Patient < ActiveRecord::Base
+	belongs_to :hospital
+
 	BLOOD_TYPE_OPTIONS =[
 		["A+", "A+"],
 		["A-", "A-"],

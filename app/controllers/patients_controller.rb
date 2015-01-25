@@ -1,13 +1,19 @@
 class PatientsController < ApplicationController
+	def index
+		@hospital = Hospital.find params[:hospital_id]
+		@patients = Patient.all
+	end
 	def new
-		@patient = Patient.new
+		@hospital = Hospital.find params[:hospital_id]
+		@patient = @hospital.patients.new
 	end
 
 	def create
-		@patient = Patient.create que_params
+		@hospital = Hospital.find params[:hospital_id]
+		@patient = @hospital.patients.create que_params
 	if @patient.save
     	flash[:notice] = 'Patient data was successfully created.'
-    	redirect_to root_path
+    	redirect_to hospital_path(@hospital)
     else
     	flash[:error] = "Patient data was NOT saved."
     	render :new
@@ -15,6 +21,7 @@ class PatientsController < ApplicationController
 	end
 
 	def edit
+		@hospital = Hospital.find params[:hospital_id]
 		@patient = Patient.find params[:id]
 	end
 
@@ -31,6 +38,7 @@ class PatientsController < ApplicationController
 	end
 
 	def show
+		@hospital = Hospital.find params[:hospital_id]
 		@patient = Patient.find params[:id]
 
 	end
@@ -53,3 +61,4 @@ private
 )
 	end
 end
+

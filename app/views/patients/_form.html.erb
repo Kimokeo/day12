@@ -6,13 +6,7 @@
   <p id="error"><%= flash[:error] %></p>
 <% end %>
 
-<%= form_for @patient do |f| %>
-  	<% if @patient.errors.any? %>
-    <% @patient.errors.full_messages.each do |message| %>
-      <%= message %>
-    <% end %>
-    <% end %>
-    <br>
+<%= form_for [@hospital, @patient] do |f| %>
 	<%= f.label :first_name %>
 	<%= f.text_field :first_name %>
 	<br>
@@ -35,6 +29,8 @@
 	<%= f.select :blood_type, options_for_select(Patient::BLOOD_TYPE_OPTIONS), 
 	 include_blank: "select" 
 		%>
+
 	<br>
 	<%= f.submit %>
+
 <% end %>
