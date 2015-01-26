@@ -3,6 +3,7 @@ class PatientsController < ApplicationController
 		@hospital = Hospital.find params[:hospital_id]
 		@patients = Patient.all
 	end
+
 	def new
 		@hospital = Hospital.find params[:hospital_id]
 		@patient = @hospital.patients.new
@@ -18,6 +19,7 @@ class PatientsController < ApplicationController
     	flash[:error] = "Patient data was NOT saved."
     	render :new
 	end
+
 	end
 
 	def edit
@@ -35,11 +37,13 @@ class PatientsController < ApplicationController
     	flash[:error] = "Patient data was NOT saved."
     	render :new
     end
+
 	end
 
 	def show
 		@hospital = Hospital.find params[:hospital_id]
 		@patient = Patient.find params[:id]
+		@medications = @patient.medications
 
 	end
 

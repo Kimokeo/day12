@@ -1,0 +1,7 @@
+<%= link_to 'Add Medication', new_medication_path(@patient, @medication) %>
+      <%= medication.name %> <%= medication.dose %>
+      <%= link_to 'Show', hospital_patient_medication_path(@hospital, @patient, medication) %>
+      <%= link_to 'Edit', edit_hospital_patient_medication_path(@hospital, @patient, medication) %>
+      <%= link_to 'Destroy', hospital_patient_medication_path(@hospital, @patient, medication), method: :delete%>
+
+<%= link_to 'Back', hospital_patients_path %>
